@@ -1,6 +1,10 @@
-import { exercises } from "@/constants/fake-data";
+import dbConnect from "@/lib/db-connect";
+import {Exercise} from "@/models/exercise";
+
 
 export async function GET() {
+  await dbConnect()
+  const exercises = await Exercise.find({}), {
   return new Response(JSON.stringify(exercises), {
     headers: {
       "content-type": "application/json",
